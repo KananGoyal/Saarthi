@@ -5,7 +5,7 @@ from flask import Flask, render_template, request
 from algorithms import dijkstra, find_all_routes, sort_routes
 from backend import format_route_label, visualize_map
 from graph_data import CITIES, GRAPH
-
+import os
 # This file is the main controller of Saarthi.
 # It connects user input, algorithm execution, and frontend rendering.
 app = Flask(__name__)
@@ -165,4 +165,5 @@ def index():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
